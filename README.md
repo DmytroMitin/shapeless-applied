@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/DmytroMitin/shapeless-applied.svg?branch=master)](https://travis-ci.org/DmytroMitin/shapeless-applied)
+[![Join the chat at https://gitter.im/DmytroMitin/AUXify](https://badges.gitter.im/DmytroMitin/AUXify.svg)](https://gitter.im/DmytroMitin/AUXify?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 # shapeless-applied
 
 shapeless-applied is a tiny library for doing typelevel computations on literal types. It's intended to be used with
