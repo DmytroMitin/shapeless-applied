@@ -2,14 +2,18 @@ name := "shapeless-applied"
 organization := "io.github.jeremyrsmith"
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.11.11"
+lazy val scala213 = "2.13.3"
+lazy val scala212 = "2.11.12"
+lazy val scala211 = "2.12.11"
+
+scalaVersion := scala213
 
 crossScalaVersions := Seq(
-  "2.11.11", "2.12.2"
+  scala213, scala212, scala211
 )
 
 libraryDependencies ++= Seq(
-  "com.chuusai" %% "shapeless" % "2.3.2",
-  "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-  "org.scalatest" %% "scalatest" % "3.0.1" % "test"
+  "com.chuusai" %% "shapeless" % "2.4.0-M1",
+  scalaOrganization.value % "scala-reflect" % scalaVersion.value,
+  "org.scalatest" %% "scalatest" % "3.2.0" % Test
 )
