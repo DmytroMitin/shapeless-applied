@@ -1,9 +1,10 @@
 package applied
 
-import org.scalatest.{FlatSpec, FreeSpec, Matchers}
+import org.scalatest.freespec.AnyFreeSpec
+import org.scalatest.matchers.should.Matchers
 import shapeless.Witness
 
-class AppliedSpec extends FreeSpec with Matchers {
+class AppliedSpec extends AnyFreeSpec with Matchers {
 
   "Symbols" - {
     "addFoo" in {
