@@ -99,6 +99,7 @@ class AppliedSpec extends AnyFreeSpec with Matchers {
       witnessResult: Witness.Aux[Out]
     ): Symbol = witnessResult.value
 
+    // FIXME #1
 //    result("blah") shouldEqual 'blah
     //Information: applied.this.Applied.materialize is not a valid implicit value for applied.Applied.Aux[applied.strToSymb.type,this.T,Out] because:
     //hasMatchingSymbol reported error: exception during macro expansion:
@@ -115,6 +116,7 @@ class AppliedSpec extends AnyFreeSpec with Matchers {
       witnessResult: Witness.Aux[Out]
     ): String = witnessResult.value
 
+    // FIXME #1
 //    result('blah) shouldEqual "blah"
     //Information: applied.this.Applied.materialize is not a valid implicit value for applied.Applied.Aux[applied.symbToStr.type,this.T,Out] because:
     //hasMatchingSymbol reported error: exception during macro expansion:
