@@ -6,7 +6,7 @@ import scala.annotation.StaticAnnotation
 import scala.reflect.macros.whitebox
 import scala.language.experimental.macros
 
-class literalFn[A](fn: A => A) extends StaticAnnotation
+class literalFn[A, B](fn: A => B) extends StaticAnnotation
 
 trait Applied[Fn, T] {
   type Out
@@ -34,7 +34,7 @@ class AppliedMacros(val c: whitebox.Context) extends SingletonTypeUtils {
 
     // unpack the implementation from its @literalFn annotation
     val (literalFnArg, literalFnImpl) = fnSym.annotations
-      .find(_.tree.tpe.typeConstructor <:< weakTypeOf[literalFn[_]].typeConstructor)
+      .find(_.tree.tpe.typeConstructor <:< weakTypeOf[literalFn[_, _]].typeConstructor)
       .map(_.tree)
       .map(c.untypecheck) // have to undo the typecheck on the tree in order to reuse its bits
       .collect {

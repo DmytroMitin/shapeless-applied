@@ -84,6 +84,15 @@ class AppliedSpec extends AnyFreeSpec with Matchers {
     result(10.10) shouldEqual math.exp(10.10)
   }
 
+  "Ints to Strings" in {
+    def result[In <: Int, Out <: String](in: Witness.Lt[In])(implicit
+      applied: Applied.Aux[intToStr.type, In, Out],
+      witnessResult: Witness.Aux[Out]
+    ): String = witnessResult.value
+
+    result(123) shouldEqual "123"
+  }
+
 }
 
 @literalFn((s: String) => s + "Foo")
@@ -114,4 +123,9 @@ object timesTwoPointTwo extends (Float => Float) {
 @literalFn((d: Double) => math.exp(d))
 object exp extends (Double => Double) {
   def apply(d: Double): Double = math.exp(d)
+}
+
+@literalFn((i: Int) => i.toString)
+object intToStr extends (Int => String) {
+  def apply(i: Int): String = i.toString
 }

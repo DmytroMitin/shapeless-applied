@@ -17,3 +17,7 @@ libraryDependencies ++= Seq(
   scalaOrganization.value % "scala-reflect" % scalaVersion.value,
   "org.scalatest" %% "scalatest" % "3.2.0" % Test
 )
+
+scalacOptions ++= Seq(
+  "-deprecation"
+)
