@@ -19,5 +19,7 @@ libraryDependencies ++= Seq(
 )
 
 scalacOptions ++= Seq(
-  "-deprecation"
+  "-deprecation",
+  "-Ymacro-debug-lite",
+  "-Xlog-implicits"
 )

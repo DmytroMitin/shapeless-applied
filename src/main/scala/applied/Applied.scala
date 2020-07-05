@@ -22,11 +22,28 @@ class AppliedMacros(val c: whitebox.Context) extends SingletonTypeUtils {
   import c.universe._
 
   def materialize[Fn : WeakTypeTag, T : WeakTypeTag, Out : WeakTypeTag]: Tree = {
-    val Fn = weakTypeOf[Fn].dealias
-    val T = weakTypeOf[T].dealias
-    val (const, convertToSymbol) = T match {
-      case SingletonSymbolType(str) => Constant(str) -> true
-      case ConstantType(cv) => cv -> false
+    val Fn  = weakTypeOf[Fn].dealias
+    val T   = weakTypeOf[T].dealias
+    val Out = weakTypeOf[Out].dealias
+    println(s"materialize: Fn=$Fn=${showRaw(Fn)}, T=$T=${showRaw(T)}, Out=$Out=${showRaw(Out)}")
+    // Out=Out=TypeRef(NoPrefix, TypeName("Out"), List()) not inferred yet
+    // have to investigate domain and codomain of function
+    val (const, convertToSymbol) = (T, Out) match {
+      case (SingletonSymbolType(str), _) =>
+        println("materialize: 0")
+        Constant(str) -> true
+//      case (SingletonSymbolType(str), SingletonSymbolType(_)) =>
+//        println("materialize: 1")
+//        Constant(str) -> true
+//      case (SingletonSymbolType(str), _)                      =>
+//        println("materialize: 2")
+//        Constant(str) -> false
+//      case (ConstantType(cv),         SingletonSymbolType(_)) =>
+//        println("materialize: 3")
+//        cv            -> true
+      case (ConstantType(cv),         _)                      =>
+        println("materialize: 4")
+        cv            -> false
     }
 
     // grab the literal function's symbol
